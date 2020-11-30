@@ -2,7 +2,7 @@
 # [Choice] Python version: 3, 3.9, 3.8, 3.7, 3.6
 ARG VARIANT="3.9-slim-buster"
 ARG PYTHON_VERSION="3.9.0"
-ARG PYTHON_INSTALL_PATH="/usr/local/python"
+ARG PYTHON_INSTALL_PATH="/usr/local/python${PYTHON_VERSION}"
 ARG INSTALL_PYTHON_TOOLS="true"
 FROM python:${VARIANT}
 
@@ -26,5 +26,5 @@ ENV PIPX_HOME=/usr/local/py-utils \
     PIPX_BIN_DIR=/usr/local/py-utils/bin
 ENV PATH=${PATH}:${PIPX_BIN_DIR}
 COPY ./.devcontainer/library-scripts/python-debian.sh /tmp/library-scripts/
-RUN bash /tmp/library-scripts/python-debian.sh "${PYTHON_VERSION}" "${PYTHON_INSTALL_PATH}${PYTHON_VERSION}" "${PIPX_HOME}" "${USERNAME}" "${INSTALL_PYTHON_TOOLS}" \ 
+RUN bash /tmp/library-scripts/python-debian.sh "${PYTHON_VERSION}" "${PYTHON_INSTALL_PATH}" "${PIPX_HOME}" "${USERNAME}" "${INSTALL_PYTHON_TOOLS}" \ 
     && apt-get clean -y && rm -rf /tmp/library-scripts

@@ -26,7 +26,7 @@ if [ "${USERNAME}" = "auto" ] || [ "${USERNAME}" = "automatic" ]; then
         fi
     done
     if [ "${USERNAME}" = "" ]; then
-        USERNAME=vscode
+        USERNAME=freddie
     fi
 elif [ "${USERNAME}" = "none" ]; then
     USERNAME=root
